@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arduino UI Test</title>
     <link rel="stylesheet" type="text/css" href="css/bulma.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+      <script src="scripts/app.js"></script>
   </head>
-  <body>
+  <body ng-controller="appController">
   <section class="section">
+      {{name}}
     <div class="container">
       <h1 class="title">
         Dataquire v0.01
@@ -24,7 +27,7 @@
 
 <div class="box">
     <div id="sensorval">
-    <h1 class="title">Sensor Readings</h1>
+    <h1 class="title" >Sensor Readings</h1>
     <div class="columns is-multiline is-mobile">
         
         
@@ -113,10 +116,10 @@
 <div class="box2">
 <div class="columns is-multiline is-mobile is-gapless">
     
-    <div class="column">
-      <figure class="image is-64x64">
-        <img src="images/house.png" alt="Image">
-      </figure>
+    <div  class="column" >
+      <a ><figure class="image is-64x64">
+        <img ng-click="home()" src="images/house.png" alt="Image">
+          </figure></a>
     </div>
         
 <div class="column">
@@ -146,5 +149,11 @@
       
       </section>
       
+      
+   
+      
   </body>
+    
+
+    
 </html>
