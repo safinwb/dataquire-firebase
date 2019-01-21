@@ -26,7 +26,7 @@
           
 
 <div class="box">
-    <div id="sensorval">
+    <div ng-show="mySensor" id="sensorval" >
     <h1 class="title" >Sensor Readings</h1>
     <div class="columns is-multiline is-mobile">
         
@@ -109,9 +109,11 @@
         
 </div>
             </div>
-    </div>
     
-
+<div ng-show="myHome" id="homeval">Welcome to Dataquire v0.01, it is still under progress and with shitty code lol.</div>
+    
+</div>
+    
 
 <div class="box2">
 <div class="columns is-multiline is-mobile is-gapless">
@@ -124,7 +126,7 @@
         
 <div class="column">
     <figure class="image is-64x64">
-        <img src="images/temperature.png" alt="Image">
+        <a><img ng-click="sens()" src="images/temperature.png" alt="Image"></a>
     </figure>
         
     </div>
