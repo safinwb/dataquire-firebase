@@ -11,7 +11,6 @@
   </head>
   <body ng-controller="appController">
   <section class="section">
-      {{name}}
     <div class="container">
       <h1 class="title">
         Dataquire v0.01
@@ -41,7 +40,7 @@
     <div class="media-content">
       <div class="content">
         <p class="is-size-2">
-          <strong>62</strong><small class="is-size-4">bpm</small>
+          <strong id="heart_reading">--</strong><small class="is-size-4">bpm</small>
           <br>
         </p>
       </div>
@@ -60,7 +59,7 @@
     <div class="media-content">
       <div class="content">
         <p class="is-size-2">
-          <strong>62</strong><small class="is-size-4">°C</small>
+          <strong id="temp_reading">--</strong><small class="is-size-4">°C</small>
           <br>
         </p>
       </div>
@@ -79,7 +78,7 @@
     <div class="media-content">
       <div class="content">
         <p class="is-size-2">
-          <strong>90</strong><small class="is-size-4">%</small>
+          <strong id='hum_reading'>--</strong><small class="is-size-4">%</small>
           <br>
         </p>
       </div>
@@ -98,7 +97,7 @@
     <div class="media-content">
       <div class="content">
         <p class="is-size-2">
-          <strong>0.90</strong><small class="is-size-4">L</small>
+          <strong id='lux_reading'>--</strong><small class="is-size-4">L</small>
           <br>
         </p>
       </div>
@@ -157,5 +156,35 @@
   </body>
     
 
+<script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBFCqmnuT2EkTqDn_Yrnz1b4n45LP1Qwsc",
+    authDomain: "dataquire-ardutest.firebaseapp.com",
+    databaseURL: "https://dataquire-ardutest.firebaseio.com",
+    projectId: "dataquire-ardutest",
+    storageBucket: "dataquire-ardutest.appspot.com",
+    messagingSenderId: "914254519739"
+  };
+  firebase.initializeApp(config);
+    
+    var heart_reading = document.getElementById('heart_reading');
+    var dbRef = firebase.database().ref().child('heart');
+    dbRef.on('value', snap => heart_reading.innerText =snap.val());
+    
+    var temp_reading = document.getElementById('temp_reading');
+    var dbRef2 = firebase.database().ref().child('temprature');
+    dbRef2.on('value', snap => temp_reading.innerText =snap.val());
+    
+    var hum_reading = document.getElementById('hum_reading');
+    var dbRef3 = firebase.database().ref().child('humidity');
+    dbRef3.on('value', snap => hum_reading.innerText =snap.val());
+    
+    var lux_reading = document.getElementById('lux_reading');
+    var dbRef4 = firebase.database().ref().child('Light');
+    dbRef4.on('value', snap => lux_reading.innerText =snap.val());
+    
+</script>
     
 </html>
